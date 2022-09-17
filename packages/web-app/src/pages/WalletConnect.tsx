@@ -5,7 +5,6 @@ import { useEtherBalance, useEthers } from "@usedapp/core";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 import {
-  Container,
   ContentBlock,
   ContentRow,
   Section,

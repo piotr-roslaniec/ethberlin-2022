@@ -22,7 +22,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
-    "web3modal": "^1.9.9"
+    "web3modal": "^1.9.9",
+    "zksync-exit": "workspaces:*"
   },
   "scripts": {
     "start": "webpack serve --mode development",
