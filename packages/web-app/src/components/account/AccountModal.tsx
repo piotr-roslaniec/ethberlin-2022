@@ -10,7 +10,6 @@ import { formatEther } from "@ethersproject/units";
 import { BigNumber } from "ethers";
 import { Colors, Shadows, Transitions } from "../../global/styles";
 import { ShareIcon } from "../Transactions/Icons";
-import { motion } from "framer-motion";
 import { Link } from "../base/Link";
 
 const formatter = new Intl.NumberFormat("en-us", {
@@ -33,10 +32,6 @@ export const AccountModal = ({ setShowModal }: AccountModalProps) => {
       <ModalBackground onClick={() => setShowModal(false)}>
         <Modal
           onClick={(e) => e.stopPropagation()}
-          layout
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
         >
           <TitleRow>
             Account info
@@ -141,7 +136,7 @@ const AccountInfo = styled.div`
   background-color: ${Colors.White};
 `;
 
-const Modal = styled(motion.div)`
+const Modal = styled.div`
   position: fixed;
   width: 600px;
 
@@ -153,7 +148,7 @@ const Modal = styled(motion.div)`
   z-index: 3;
 `;
 
-const ModalBackground = styled(motion.div)`
+const ModalBackground = styled.div`
   top: 0;
   left: 0;
   position: fixed;

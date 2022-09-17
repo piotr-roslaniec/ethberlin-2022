@@ -1,11 +1,11 @@
 import React from "react";
-import { WalletConnect } from "./pages/WalletConnect";
+import { ConnectorPage } from "./pages";
 
 export function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <WalletConnect />
+        <ConnectorPage />
       </header>
     </div>
   );

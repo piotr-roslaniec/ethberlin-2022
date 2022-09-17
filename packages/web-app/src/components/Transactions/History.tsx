@@ -23,7 +23,6 @@ import {
   SpinnerIcon,
 } from "./Icons";
 import { Colors, Shadows } from "../../global/styles";
-import { AnimatePresence, motion } from "framer-motion";
 import { formatEther } from "@ethersproject/units";
 import { BigNumber } from "ethers";
 import { Link } from "../base/Link";
@@ -110,10 +109,6 @@ interface ListElementProps {
 const ListElement = ({ transaction, icon, title, date }: ListElementProps) => {
   return (
     <ListElementWrapper
-      layout
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
     >
       <ListIconContainer>{icon}</ListIconContainer>
       <ListDetailsWrapper>
@@ -143,17 +138,15 @@ export const TransactionsList = () => {
   const { transactions } = useTransactions();
   return (
     <TableWrapper title="Transactions history">
-      <AnimatePresence initial={false}>
-        {transactions.map((transaction) => (
-          <ListElement
-            transaction={transaction.transaction}
-            title={transaction.transactionName}
-            icon={TransactionIcon(transaction)}
-            key={transaction.transaction.hash}
-            date={transaction.submittedAt}
-          />
-        ))}
-      </AnimatePresence>
+      {transactions.map((transaction) => (
+        <ListElement
+          transaction={transaction.transaction}
+          title={transaction.transactionName}
+          icon={TransactionIcon(transaction)}
+          key={transaction.transaction.hash}
+          date={transaction.submittedAt}
+        />
+      ))}
     </TableWrapper>
   );
 };
@@ -165,10 +158,6 @@ const NotificationElement = ({
 }: ListElementProps) => {
   return (
     <NotificationWrapper
-      layout
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
     >
       <NotificationIconContainer>{icon}</NotificationIconContainer>
       <NotificationDetailsWrapper>
@@ -176,8 +165,7 @@ const NotificationElement = ({
         <TransactionLink transaction={transaction} />
         <TransactionDetails>
           {transaction &&
-            `${shortenTransactionHash(transaction?.hash)} #${
-              transaction.nonce
+            `${shortenTransactionHash(transaction?.hash)} #${transaction.nonce
             }`}
         </TransactionDetails>
       </NotificationDetailsWrapper>
@@ -194,29 +182,27 @@ export const NotificationsList = () => {
   const { notifications } = useNotifications();
   return (
     <NotificationsWrapper>
-      <AnimatePresence initial={false}>
-        {notifications.map((notification) => {
-          if ("transaction" in notification)
-            return (
-              <NotificationElement
-                key={notification.id}
-                icon={notificationContent[notification.type].icon}
-                title={notificationContent[notification.type].title}
-                transaction={notification.transaction}
-                date={Date.now()}
-              />
-            );
-          else
-            return (
-              <NotificationElement
-                key={notification.id}
-                icon={notificationContent[notification.type].icon}
-                title={notificationContent[notification.type].title}
-                date={Date.now()}
-              />
-            );
-        })}
-      </AnimatePresence>
+      {notifications.map((notification) => {
+        if ("transaction" in notification)
+          return (
+            <NotificationElement
+              key={notification.id}
+              icon={notificationContent[notification.type].icon}
+              title={notificationContent[notification.type].title}
+              transaction={notification.transaction}
+              date={Date.now()}
+            />
+          );
+        else
+          return (
+            <NotificationElement
+              key={notification.id}
+              icon={notificationContent[notification.type].icon}
+              title={notificationContent[notification.type].title}
+              date={Date.now()}
+            />
+          );
+      })}
     </NotificationsWrapper>
   );
 };
@@ -230,7 +216,7 @@ const TransactionDetails = styled.div`
   font-size: 14px;
 `;
 
-const NotificationWrapper = styled(motion.div)`
+const NotificationWrapper = styled.div`
   display: flex;
   align-items: center;
   background-color: ${Colors.White};
@@ -261,7 +247,7 @@ const ListIconContainer = styled.div`
   padding: 14px 16px 14px 12px;
 `;
 
-const ListElementWrapper = styled(motion.div)`
+const ListElementWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;

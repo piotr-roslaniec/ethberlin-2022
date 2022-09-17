@@ -13,8 +13,6 @@ import { BorderRad, Colors } from "../../global/styles";
 import { BigNumber } from "ethers";
 import { SpinnerIcon, CheckIcon, ExclamationIcon } from "./Icons";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 const formatter = new Intl.NumberFormat("en-us", {
   minimumFractionDigits: 4,
   maximumFractionDigits: 4,
@@ -31,10 +29,6 @@ interface StatusBlockProps {
 
 const StatusBlock = ({ color, text, icon }: StatusBlockProps) => (
   <InformationRow
-    layout
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 50 }}
     key={text}
   >
     <IconContainer style={{ fill: color }}>{icon}</IconContainer>
@@ -67,40 +61,38 @@ export const StatusAnimation = ({ transaction }: StatusAnimationProps) => {
 
   return (
     <AnimationWrapper>
-      <AnimatePresence initial={false} exitBeforeEnter>
-        {showTransactionStatus && transactionErrored(transaction) && (
-          <StatusBlock
-            color={Colors.Red["400"]}
-            text={transaction?.errorMessage || ""}
-            icon={<ExclamationIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "Mining" && (
-          <StatusBlock
-            color="black"
-            text="Transaction is being mined"
-            icon={<SpinnerIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "PendingSignature" && (
-          <StatusBlock
-            color="black"
-            text="Waiting for wallet owners to sign the transaction"
-            icon={<SpinnerIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "Success" && (
-          <StatusBlock
-            color="green"
-            text="Transaction successful"
-            icon={<CheckIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-      </AnimatePresence>
+      {showTransactionStatus && transactionErrored(transaction) && (
+        <StatusBlock
+          color={Colors.Red["400"]}
+          text={transaction?.errorMessage || ""}
+          icon={<ExclamationIcon />}
+          key={transaction?.chainId + transaction.status}
+        />
+      )}
+      {showTransactionStatus && transaction.status === "Mining" && (
+        <StatusBlock
+          color="black"
+          text="Transaction is being mined"
+          icon={<SpinnerIcon />}
+          key={transaction?.chainId + transaction.status}
+        />
+      )}
+      {showTransactionStatus && transaction.status === "PendingSignature" && (
+        <StatusBlock
+          color="black"
+          text="Waiting for wallet owners to sign the transaction"
+          icon={<SpinnerIcon />}
+          key={transaction?.chainId + transaction.status}
+        />
+      )}
+      {showTransactionStatus && transaction.status === "Success" && (
+        <StatusBlock
+          color="green"
+          text="Transaction successful"
+          icon={<CheckIcon />}
+          key={transaction?.chainId + transaction.status}
+        />
+      )}
     </AnimationWrapper>
   );
 };
@@ -273,7 +265,7 @@ const IconContainer = styled.div`
   float: left;
 `;
 
-const InformationRow = styled(motion.div)`
+const InformationRow = styled.div`
   height: 60px;
   font-size: 14px;
   display: flex;
