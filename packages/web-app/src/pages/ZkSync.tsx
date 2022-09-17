@@ -1,9 +1,11 @@
+import { formatEther } from "@ethersproject/units";
 import { useEthers } from "@usedapp/core";
 import { useEffect, useState } from "react";
 import * as zksync from "zksync-exit";
 import { Wallet } from "zksync-exit";
 
-import { SectionRow } from "../components/base/base";
+import { ContentBlock, ContentRow, Section, SectionRow } from "../components/base/base";
+import { Title } from "../typography/Title";
 
 type Balance = {
   tokenName: string;
@@ -50,7 +52,7 @@ export const ZkSync = () => {
     );
     return (
       <p>
-        {balance.tokenName} - {balance.balance} {maybeButton}
+        {balance.tokenName} - {formatEther(balance.balance)} {maybeButton}
       </p>
     );
   };
@@ -60,16 +62,19 @@ export const ZkSync = () => {
   }
 
   return (
-    <SectionRow>
-      <div>
-        <h2>ZkSync</h2>
-      </div>
-
-      <ul>
-        {balances.map((balance) => (
-          <li key={balance.tokenName}>{toToken(balance)}</li>
-        ))}
-      </ul>
-    </SectionRow>
+    <Section>
+      <SectionRow>
+        <Title>ZkSync</Title>
+      </SectionRow>
+      <SectionRow>
+        <ContentBlock>
+          {balances.map((balance) => (
+            <ContentRow>
+              <p key={balance.tokenName}>{toToken(balance)}</p>
+            </ContentRow>
+          ))}
+        </ContentBlock>
+      </SectionRow>
+    </Section>
   );
 };
