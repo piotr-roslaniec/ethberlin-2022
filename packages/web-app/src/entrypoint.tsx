@@ -3,36 +3,32 @@ import ReactDOM from "react-dom";
 import {
   Mainnet,
   DAppProvider,
-  Ropsten,
-  Kovan,
   Config,
-  Arbitrum,
   Localhost,
+  Goerli,
 } from "@usedapp/core";
-import { App } from "./App";
 import { getDefaultProvider } from "ethers";
+import { App } from "./App";
 
 const readOnlyUrls: Config["readOnlyUrls"] = {
   [Mainnet.chainId]: process.env.MAINNET_URL || getDefaultProvider("mainnet"),
-  [Ropsten.chainId]: process.env.MAINNET_URL
-    ? process.env.MAINNET_URL.replace("mainnet", "ropsten")
-    : getDefaultProvider("ropsten"),
-  [Kovan.chainId]: process.env.MAINNET_URL
-    ? process.env.MAINNET_URL.replace("mainnet", "kovan")
-    : getDefaultProvider("kovan"),
-  [Arbitrum.chainId]: "https://arb1.arbitrum.io/rpc",
+  [Goerli.chainId]: process.env.GOERLI_URL
+    ? process.env.GOERLI_URL.replace("mainnet", "goerli")
+    : getDefaultProvider("goerli"),
 };
 
 if (process.env.LOCALHOST_URL) {
   readOnlyUrls[Localhost.chainId] = process.env.LOCALHOST_URL;
 }
 
+// TODO: Throw error when on unsupported network (!= Goerli)
 const config: Config = {
   readOnlyChainId: Mainnet.chainId,
   readOnlyUrls,
   multicallVersion: 2 as const,
   fastMulticallEncoding: true,
   noMetamaskDeactivate: true,
+  networks: [Goerli],
 };
 
 ReactDOM.render(

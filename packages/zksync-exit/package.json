@@ -1,6 +1,6 @@
 {
   "name": "zksync-exit",
-  "packageManager": "yarn@3.2.1",
+  "version": "0.1.0",
   "dependencies": {
     "@types/node": "^18.7.18",
     "ethers": "^5.7.1",
@@ -8,11 +8,13 @@
     "zksync": "^0.13.1"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node ./src/index.ts",
-    "dev": "ts-node ./src/app.ts"
-  }
+    "build": "rimraf dist && tsc",
+    "start": "ts-node ./src/index.ts"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }

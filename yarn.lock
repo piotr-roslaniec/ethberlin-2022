@@ -18331,6 +18331,7 @@ __metadata:
     webpack-bundle-analyzer: ^4.4.0
     webpack-cli: ^4.1.0
     webpack-dev-server: ^3.11.0
+    zksync-exit: "workspaces:*"
   languageName: unknown
   linkType: soft
 
@@ -19399,12 +19400,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zksync-exit@workspace:packages/zksync-exit":
+"zksync-exit@workspace:packages/zksync-exit, zksync-exit@workspaces:*":
   version: 0.0.0-use.local
   resolution: "zksync-exit@workspace:packages/zksync-exit"
   dependencies:
     "@types/node": ^18.7.18
     ethers: ^5.7.1
+    rimraf: ^3.0.2
     ts-node: ^10.9.1
     typescript: ^4.8.3
     zksync: ^0.13.1
