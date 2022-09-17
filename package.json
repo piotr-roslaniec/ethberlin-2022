@@ -11,5 +11,9 @@
     "lint": "yarn workspaces foreach -vip run lint",
     "lint:fix": "yarn workspaces foreach -vip run lint:fix"
   },
-  "packageManager": "yarn@3.2.3"
+  "engines": {
+    "node": "16.x",
+    "yarn": "3.2.1"
+  },
+  "packageManager": "yarn@3.2.1"
 }
