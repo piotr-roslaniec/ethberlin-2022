@@ -3,15 +3,11 @@ export const Colors = {
     900: "#23242A",
     200: "#DDE2EB",
   },
-  Gray: {
-    600: "#757575",
-    300: "#E0E0E0",
-  },
+  Gray: "#5E5B50",
   White: "#ffffff",
   Yellow: {
-    500: "#F2C94C",
-    200: "#fff9e6",
-    100: "#FFF4D4",
+    200: "#23242A",
+    100: "#FFD600",
   },
   Red: { 400: "#F87171" },
 };
@@ -27,7 +23,7 @@ export const Shadows = {
 };
 
 export const Gradients = {
-  bodyBackground: `linear-gradient(180deg, ${Colors.Yellow[100]}, ${Colors.White})`,
+  // bodyBackground: `linear-gradient(180deg, ${Colors.Yellow[100]}, ${Colors.White})`,
 };
 
 export const Transitions = {
@@ -36,8 +32,8 @@ export const Transitions = {
 };
 
 export const BorderRad = {
-  s: "8px",
-  m: "24px",
-  round: "50%",
-  full: "1000px",
+  // s: "8px",
+  // m: "24px",
+  // round: "50%",
+  // full: "1000px",
 };

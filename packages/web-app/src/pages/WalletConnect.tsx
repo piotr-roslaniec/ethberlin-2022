@@ -56,12 +56,22 @@ export function WalletConnect() {
   return (
     <>
       <Section>
+      <img src="images/Logo.png" alt="logo" />
+
         <SectionRow>
-          <Title>WalletConnect Usage Example</Title>
+          <Title>WALLETCONNECT USAGE EXAMPLE</Title>
           <Button onClick={account ? onDisconnect : onConnect}>
-            {account ? "Disconnect" : "Connect"}
+            {account ? "DISCONNECT" : "WalletConnect"}
           </Button>
         </SectionRow>
+
+        <SectionRow>
+          <Title>SELECT AN L2 TO EXIT</Title>
+          {/* <Select>
+          
+          </Select>  */}
+        </SectionRow>
+
         <ContentBlock>
           {chainId && account && (
             <ContentRow>
