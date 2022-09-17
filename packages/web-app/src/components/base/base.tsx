@@ -1,12 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import {
-  BorderRad,
-  Colors,
-  Gradients,
-  Shadows,
-  Transitions,
-} from "../../global/styles";
+import { Colors, Shadows, Transitions } from "../../global/styles";
 import { Title } from "../../typography/Title";
 
 export const Page = styled.div`
@@ -50,7 +44,6 @@ export const MainContent = styled.main`
     overflow: hidden;
     pointer-events: none;
     user-select: none;
-    background-image: ${Gradients.bodyBackground};
   }
 `;
 
@@ -90,7 +83,6 @@ export const ContentBlock = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${Colors.White};
-  border-radius: ${BorderRad.s};
   box-shadow: ${Shadows.main};
   padding: 32px 32px;
 `;
@@ -125,7 +117,6 @@ export const ToMain = styled.a`
   transition: ${Transitions.all};
 
   &:hover {
-    color: ${Colors.Yellow[500]};
   }
 `;
 
@@ -170,22 +161,18 @@ export const SidebarLink = styled(NavLink)`
     bottom: 0;
     width: calc(100% - 20px);
     height: 2px;
-    background-color: ${Colors.Yellow[500]};
     transform: scaleX(0);
     transform-origin: 50% 50%;
     transition: ${Transitions.all};
   }
 
   &:hover {
-    color: ${Colors.Yellow[500]};
-
     &:after {
       transform: scaleX(1);
     }
   }
   &.active-page {
     background: ${Colors.Yellow[200]};
-    border-radius: ${BorderRad.s};
 
     &:after {
       transform: scaleX(1);

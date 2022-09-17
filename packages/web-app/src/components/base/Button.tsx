@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BorderRad, Colors, Fonts, Transitions } from "../../global/styles";
+import { Colors, Fonts, Transitions } from "../../global/styles";
 
 export const Button = styled.button`
   display: grid;
@@ -16,9 +16,8 @@ export const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: ${Colors.Black[900]};
-  border: 1px solid ${Colors.Black[900]};
-  border-radius: ${BorderRad.m};
-  background-color: transparent;
+  border: 0px solid ${Colors.Black[900]};
+  background-color: ${Colors.Yellow[100]};
   cursor: pointer;
   transition: ${Transitions.all};
 

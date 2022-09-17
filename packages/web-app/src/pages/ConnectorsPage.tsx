@@ -1,8 +1,15 @@
 import React from "react";
-import { MetamaskConnector } from "@usedapp/core";
-import { Container, Section, SectionRow } from "../components/base/base";
-import { SingleConnector } from "../components/connectors/SingleConnector";
+import { MetamaskConnector, useEthers } from "@usedapp/core";
+
 import { WalletConnect } from "./WalletConnect";
+import { SingleConnector } from "../components/connectors/SingleConnector";
+import {
+  Container,
+  Section,
+  SectionRow,
+} from "../components/base/base";
+import { Button } from "../components/base/Button";
+import { Title } from "../typography/Title";
 
 export const ConnectorPage = () => {
   const connectors = {
@@ -12,15 +19,27 @@ export const ConnectorPage = () => {
     // portis: new PortisConnector(PORTIS_DAPP_ID, 'mainnet'),
   };
 
+  const { account, deactivate } = useEthers();
+
+  async function onDisconnect() {
+    deactivate();
+    localStorage.removeItem("walletconnect");
+  }
+
   return (
     <Container>
       <Section>
-        {Object.entries(connectors).map(([name, connector]) => (
-          <SingleConnector key={name} name={name} connector={connector} />
-        ))}
         <SectionRow>
-          <WalletConnect />
+          <Title>SELECT A WEB3 PROVIDER</Title>
         </SectionRow>
+        {(account && <Button onClick={onDisconnect}>DISCONNECT</Button>) || (
+          <>
+            {Object.entries(connectors).map(([name, connector]) => (
+              <SingleConnector key={name} name={name} connector={connector} />
+            ))}
+            <WalletConnect />
+          </>
+        )}
       </Section>
     </Container>
   );
