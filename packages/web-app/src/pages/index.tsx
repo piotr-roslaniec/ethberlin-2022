@@ -1,1 +1,1 @@
-export * from "./ConnectorsPage";
+export * from "./Main";

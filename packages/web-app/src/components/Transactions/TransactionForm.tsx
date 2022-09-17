@@ -28,9 +28,7 @@ interface StatusBlockProps {
 }
 
 const StatusBlock = ({ color, text, icon }: StatusBlockProps) => (
-  <InformationRow
-    key={text}
-  >
+  <InformationRow key={text}>
     <IconContainer style={{ fill: color }}>{icon}</IconContainer>
     <div style={{ color: color, textAlign: "center" }}>{text}</div>
   </InformationRow>

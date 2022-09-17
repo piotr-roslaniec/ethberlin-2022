@@ -30,9 +30,7 @@ export const AccountModal = ({ setShowModal }: AccountModalProps) => {
   if (account && chainId) {
     return (
       <ModalBackground onClick={() => setShowModal(false)}>
-        <Modal
-          onClick={(e) => e.stopPropagation()}
-        >
+        <Modal onClick={(e) => e.stopPropagation()}>
           <TitleRow>
             Account info
             <ClosingButton onClick={() => setShowModal(false)}>+</ClosingButton>
