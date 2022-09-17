@@ -1,11 +1,11 @@
 import React from "react";
-import { ConnectorPage } from "./pages";
+import { Main } from "./pages";
 
 export function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ConnectorPage />
+        <Main />
       </header>
     </div>
   );

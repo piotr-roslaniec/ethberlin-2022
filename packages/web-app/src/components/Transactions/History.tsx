@@ -108,8 +108,7 @@ interface ListElementProps {
 
 const ListElement = ({ transaction, icon, title, date }: ListElementProps) => {
   return (
-    <ListElementWrapper
-    >
+    <ListElementWrapper>
       <ListIconContainer>{icon}</ListIconContainer>
       <ListDetailsWrapper>
         <TextBold>{title}</TextBold>
@@ -157,15 +156,15 @@ const NotificationElement = ({
   title,
 }: ListElementProps) => {
   return (
-    <NotificationWrapper
-    >
+    <NotificationWrapper>
       <NotificationIconContainer>{icon}</NotificationIconContainer>
       <NotificationDetailsWrapper>
         <NotificationText>{title}</NotificationText>
         <TransactionLink transaction={transaction} />
         <TransactionDetails>
           {transaction &&
-            `${shortenTransactionHash(transaction?.hash)} #${transaction.nonce
+            `${shortenTransactionHash(transaction?.hash)} #${
+              transaction.nonce
             }`}
         </TransactionDetails>
       </NotificationDetailsWrapper>
