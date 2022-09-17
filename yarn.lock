@@ -16023,6 +16023,8 @@ __metadata:
 "root@workspace:.":
   version: 0.0.0-use.local
   resolution: "root@workspace:."
+  dependencies:
+    ethers: ^5.7.1
   languageName: unknown
   linkType: soft
 
