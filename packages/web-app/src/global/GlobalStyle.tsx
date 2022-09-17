@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import HelveticaNeue from "../assets/fonts/HelveticaNeue.woff2";
-import HelveticaNeueBold from "../assets/fonts/HelveticaNeueBold.woff2";
-import HelveticaNeueMedium from "../assets/fonts/HelveticaNeueMedium.woff2";
+import Dinsrg from "../assets/fonts/Dinsrg.woff";
+import Dinsrg2 from "../assets/fonts/Dinsrg.woff2";
 import { Colors, Fonts } from "./styles";
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,25 +14,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: "HelveticaNeue";
-    src: url(${HelveticaNeue}) format('woff2');
-    font-weight: 400;
+    font-family: 'Dinsrg';
+    src: url(${Dinsrg2}) format('woff2'),
+         url(${Dinsrg}) format('woff');
+    font-weight: normal;
     font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "HelveticaNeue";
-    src: url(${HelveticaNeueMedium}) format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "HelveticaNeue";
-    src: url(${HelveticaNeueBold}) format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
   }
 
   body, html {
@@ -41,14 +26,14 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     background-color: ${Colors.White};
-    font-family: ${Fonts.Helvetica};
+    font-family: ${Fonts.Dinsrg};
     font-size: 16px;
     color: ${Colors.Black[900]};
     overscroll-behavior-y: none;
   }
   
   button {
-    font-family: ${Fonts.Helvetica};
+    font-family: ${Fonts.Dinsrg};
     font-size: 1em;
     border: none;
     background-color: transparent;
@@ -76,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     line-height: 150%;
     font-weight: 600;
-    font-family: ${Fonts.Helvetica};
+    font-family: ${Fonts.Dinsrg};
   }
 
   h1 {

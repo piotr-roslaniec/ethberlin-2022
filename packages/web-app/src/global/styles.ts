@@ -17,7 +17,8 @@ export const Colors = {
 };
 
 export const Fonts = {
-  Helvetica: '"HelveticaNeue", sans-serif',
+  // Helvetica: '"HelveticaNeue", sans-serif',
+  Dinsrg: 'Dinsrg, Dinsrg2',
 };
 
 export const Shadows = {
