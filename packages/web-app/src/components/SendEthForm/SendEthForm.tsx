@@ -1,48 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import { formatEther } from '@ethersproject/units'
-import { BigNumber } from 'ethers'
-import { ContentBlock } from '../base/base'
-import { TextBold } from '../../typography/Text'
-import { Colors, BorderRad, Transitions } from '../../global/styles'
-import styled from 'styled-components'
-import { useEtherBalance, useEthers } from '@usedapp/core'
-import { Button } from '../base/Button'
-import { useSendTransaction } from '@usedapp/core'
-import { utils } from 'ethers'
-import { StatusAnimation } from '../Transactions/TransactionForm'
+import React, { useEffect, useState } from "react";
+import { formatEther } from "@ethersproject/units";
+import { BigNumber } from "ethers";
+import { ContentBlock } from "../base/base";
+import { TextBold } from "../../typography/Text";
+import { Colors, BorderRad, Transitions } from "../../global/styles";
+import styled from "styled-components";
+import { useEtherBalance, useEthers } from "@usedapp/core";
+import { Button } from "../base/Button";
+import { useSendTransaction } from "@usedapp/core";
+import { utils } from "ethers";
+import { StatusAnimation } from "../Transactions/TransactionForm";
 
-const formatter = new Intl.NumberFormat('en-us', {
+const formatter = new Intl.NumberFormat("en-us", {
   minimumFractionDigits: 4,
   maximumFractionDigits: 4,
-})
+});
 
 const formatBalance = (balance: BigNumber | undefined) =>
-  formatter.format(parseFloat(formatEther(balance ?? BigNumber.from('0'))))
+  formatter.format(parseFloat(formatEther(balance ?? BigNumber.from("0"))));
 
 const InputComponent = () => {
-  const { account } = useEthers()
+  const { account } = useEthers();
 
-  const [amount, setAmount] = useState('0')
-  const [address, setAddress] = useState('')
-  const [disabled, setDisabled] = useState(false)
+  const [amount, setAmount] = useState("0");
+  const [address, setAddress] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
-  const { sendTransaction, state } = useSendTransaction({ transactionName: 'Send Ethereum' })
+  const { sendTransaction, state } = useSendTransaction({
+    transactionName: "Send Ethereum",
+  });
 
   const handleClick = () => {
-    setDisabled(true)
-    void sendTransaction({ to: address, value: utils.parseEther(amount) })
-  }
+    setDisabled(true);
+    void sendTransaction({ to: address, value: utils.parseEther(amount) });
+  };
 
   useEffect(() => {
-    if (state.status != 'Mining') {
-      setDisabled(false)
-      setAmount('0')
-      setAddress('')
+    if (state.status != "Mining") {
+      setDisabled(false);
+      setAmount("0");
+      setAddress("");
     }
-  }, [state])
+  }, [state]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <InputRow>
         <Input
           id={`EthInput`}
@@ -67,39 +69,41 @@ const InputComponent = () => {
       </InputRow>
       <StatusAnimation transaction={state} />
     </div>
-  )
-}
+  );
+};
 
 export const SendEthForm = () => {
-  const { account } = useEthers()
-  const balance = useEtherBalance(account)
+  const { account } = useEthers();
+  const balance = useEtherBalance(account);
   return (
     <ContentBlock style={{ padding: 0 }}>
       <TitleRow>
         <CellTitle>Send transaction</CellTitle>
-        <BalanceWrapper>Your ETH balance: {formatBalance(balance)}</BalanceWrapper>
+        <BalanceWrapper>
+          Your ETH balance: {formatBalance(balance)}
+        </BalanceWrapper>
       </TitleRow>
       <LabelRow>
-        <Label style={{ marginLeft: '58px' }} htmlFor={'EthInput'}>
+        <Label style={{ marginLeft: "58px" }} htmlFor={"EthInput"}>
           How much?
         </Label>
-        <Label style={{ marginLeft: '240px' }} htmlFor={'AddressInput'}>
+        <Label style={{ marginLeft: "240px" }} htmlFor={"AddressInput"}>
           To whom?
         </Label>
       </LabelRow>
       <InputComponent />
     </ContentBlock>
-  )
-}
+  );
+};
 
 const CellTitle = styled(TextBold)`
   font-size: 18px;
-`
+`;
 
 const LabelRow = styled.div`
   display: flex;
   margin: 32px 0 24px 0;
-`
+`;
 
 const Label = styled.label`
   font-weight: 700;
@@ -110,20 +114,20 @@ const Label = styled.label`
   &:focus-within {
     color: ${Colors.Yellow[500]};
   }
-`
+`;
 
 const TitleRow = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: ${Colors.Gray['300']} 1px solid;
+  border-bottom: ${Colors.Gray["300"]} 1px solid;
   padding: 16px;
-`
+`;
 
 const BalanceWrapper = styled.div`
-  color: ${Colors.Gray['600']};
+  color: ${Colors.Gray["600"]};
   font-size: 14px;
-`
+`;
 
 const Input = styled.input`
   height: 100%;
@@ -146,20 +150,20 @@ const Input = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
   }
-`
+`;
 
 const AddressInput = styled(Input)`
   width: 401px;
   padding: 0 0 0 38px;
-`
+`;
 
 const InputRow = styled.div`
   height: 44px;
   display: flex;
   margin: 0 auto;
-  color: ${Colors.Gray['600']};
+  color: ${Colors.Gray["600"]};
   align-items: center;
-  border: ${Colors.Gray['300']} 1px solid;
+  border: ${Colors.Gray["300"]} 1px solid;
   border-radius: ${BorderRad.m};
   overflow: hidden;
   transition: ${Transitions.all};
@@ -168,11 +172,11 @@ const InputRow = styled.div`
   &:focus-within {
     border-color: ${Colors.Black[900]};
   }
-`
+`;
 
 const FormTicker = styled.div`
   padding: 0 8px;
-`
+`;
 
 const SmallButton = styled(Button)`
   display: flex;
@@ -182,7 +186,7 @@ const SmallButton = styled(Button)`
   padding: 8px 24px;
 
   &:disabled {
-    color: ${Colors.Gray['600']};
+    color: ${Colors.Gray["600"]};
     cursor: unset;
   }
 
@@ -191,4 +195,4 @@ const SmallButton = styled(Button)`
     background-color: unset;
     color: unset;
   }
-`
+`;

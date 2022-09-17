@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Colors, Transitions } from '../../global/styles'
+import styled from "styled-components";
+import { Colors, Transitions } from "../../global/styles";
 
 export const Link = styled.a`
   display: flex;
@@ -7,7 +7,7 @@ export const Link = styled.a`
   gap: 4px;
   font-size: 12px;
   text-decoration: underline;
-  color: ${Colors.Gray['600']};
+  color: ${Colors.Gray["600"]};
   cursor: pointer;
   transition: ${Transitions.all};
 
@@ -15,4 +15,4 @@ export const Link = styled.a`
   &:focus-within {
     color: ${Colors.Yellow[500]};
   }
-`
+`;

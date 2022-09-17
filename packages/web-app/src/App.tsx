@@ -1,8 +1,7 @@
-import React from 'react';
-import './App.css';
-import { WalletConnect } from './pages/WalletConnect';
+import React from "react";
+import { WalletConnect } from "./pages/WalletConnect";
 
-function App() {
+export function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -11,5 +10,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

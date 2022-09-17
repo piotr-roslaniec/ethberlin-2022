@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
-import { Label } from '../../typography/Label'
-import { TextInline } from '../../typography/Text'
-import { Title } from '../../typography/Title'
-import { MainContent, Container, Section, SectionRow, ContentBlock, ContentRow } from '../base/base'
-import { useLookupAddress, useResolveName } from '@usedapp/core'
-import styled from 'styled-components'
-import { BorderRad, Colors, Transitions } from '../../global/styles'
-import { Button } from '../base/Button'
+import React, { useState } from "react";
+import { Label } from "../../typography/Label";
+import { TextInline } from "../../typography/Text";
+import { Title } from "../../typography/Title";
+import {
+  MainContent,
+  Container,
+  Section,
+  SectionRow,
+  ContentBlock,
+  ContentRow,
+} from "../base/base";
+import { useLookupAddress, useResolveName } from "@usedapp/core";
+import styled from "styled-components";
+import { BorderRad, Colors, Transitions } from "../../global/styles";
+import { Button } from "../base/Button";
 
 export const ENSExample = () => {
   return (
@@ -18,13 +25,13 @@ export const ENSExample = () => {
         </Section>
       </Container>
     </MainContent>
-  )
-}
+  );
+};
 
 export const ResolveName = () => {
-  const [input, setInput] = useState('')
-  const [name, setName] = useState<string | undefined>(undefined)
-  const { address, isLoading } = useResolveName(name)
+  const [input, setInput] = useState("");
+  const [name, setName] = useState<string | undefined>(undefined);
+  const { address, isLoading } = useResolveName(name);
 
   return (
     <>
@@ -42,23 +49,25 @@ export const ResolveName = () => {
               disabled={isLoading}
             />
             <SmallButton onClick={() => setName(input)} disabled={isLoading}>
-              {isLoading ? 'Loading' : 'Resolve'}
+              {isLoading ? "Loading" : "Resolve"}
             </SmallButton>
           </InputRow>
         </ContentRow>
         <ContentRow>
           <Label>Resolved address:</Label>
-          <TextInline>{address === null ? 'Address not found' : address}</TextInline>
+          <TextInline>
+            {address === null ? "Address not found" : address}
+          </TextInline>
         </ContentRow>
       </ContentBlock>
     </>
-  )
-}
+  );
+};
 
 export const LookupAddress = () => {
-  const [input, setInput] = useState('')
-  const [address, setAddress] = useState<string | undefined>(undefined)
-  const { ens, isLoading } = useLookupAddress(address)
+  const [input, setInput] = useState("");
+  const [address, setAddress] = useState<string | undefined>(undefined);
+  const { ens, isLoading } = useLookupAddress(address);
 
   return (
     <>
@@ -76,18 +85,18 @@ export const LookupAddress = () => {
               disabled={isLoading}
             />
             <SmallButton onClick={() => setAddress(input)} disabled={isLoading}>
-              {isLoading ? 'Loading' : 'Lookup'}
+              {isLoading ? "Loading" : "Lookup"}
             </SmallButton>
           </InputRow>
         </ContentRow>
         <ContentRow>
           <Label>Found name:</Label>
-          <TextInline>{ens === null ? 'No name found' : ens}</TextInline>
+          <TextInline>{ens === null ? "No name found" : ens}</TextInline>
         </ContentRow>
       </ContentBlock>
     </>
-  )
-}
+  );
+};
 
 const Input = styled.input`
   height: 100%;
@@ -110,15 +119,15 @@ const Input = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
   }
-`
+`;
 
 const InputRow = styled.div`
   height: 44px;
   display: flex;
   margin: 0 auto;
-  color: ${Colors.Gray['600']};
+  color: ${Colors.Gray["600"]};
   align-items: center;
-  border: ${Colors.Gray['300']} 1px solid;
+  border: ${Colors.Gray["300"]} 1px solid;
   border-radius: ${BorderRad.m};
   overflow: hidden;
   transition: ${Transitions.all};
@@ -127,7 +136,7 @@ const InputRow = styled.div`
   &:focus-within {
     border-color: ${Colors.Black[900]};
   }
-`
+`;
 
 const SmallButton = styled(Button)`
   display: flex;
@@ -137,7 +146,7 @@ const SmallButton = styled(Button)`
   padding: 8px 24px;
 
   &:disabled {
-    color: ${Colors.Gray['600']};
+    color: ${Colors.Gray["600"]};
     cursor: unset;
   }
 
@@ -146,4 +155,4 @@ const SmallButton = styled(Button)`
     background-color: unset;
     color: unset;
   }
-`
+`;

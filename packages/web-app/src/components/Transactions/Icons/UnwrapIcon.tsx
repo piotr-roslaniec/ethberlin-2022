@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const UnwrapIcon = () => (
   <svg fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,4 +9,4 @@ export const UnwrapIcon = () => (
       fill="#200E32"
     />
   </svg>
-)
+);

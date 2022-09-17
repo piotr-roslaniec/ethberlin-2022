@@ -1,7 +1,13 @@
-import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-import { BorderRad, Colors, Gradients, Shadows, Transitions } from '../../global/styles'
-import { Title } from '../../typography/Title'
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import {
+  BorderRad,
+  Colors,
+  Gradients,
+  Shadows,
+  Transitions,
+} from "../../global/styles";
+import { Title } from "../../typography/Title";
 
 export const Page = styled.div`
   display: flex;
@@ -9,7 +15,7 @@ export const Page = styled.div`
   flex-direction: column;
   height: 100%;
   min-height: 100vh;
-`
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -20,11 +26,11 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-left: 14px;
   padding-right: 14px;
-`
+`;
 
 export const SidebarContainer = styled(Container)`
   max-width: 1200px;
-`
+`;
 
 export const MainContent = styled.main`
   display: flex;
@@ -35,7 +41,7 @@ export const MainContent = styled.main`
   overflow: hidden;
 
   &:before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -46,7 +52,7 @@ export const MainContent = styled.main`
     user-select: none;
     background-image: ${Gradients.bodyBackground};
   }
-`
+`;
 
 export const Section = styled.section`
   display: flex;
@@ -56,7 +62,7 @@ export const Section = styled.section`
   height: 100%;
   margin-top: 24px;
   margin-bottom: 60px;
-`
+`;
 
 export const SectionRow = styled.div`
   display: flex;
@@ -68,7 +74,7 @@ export const SectionRow = styled.div`
   ${Title} {
     margin-bottom: 0;
   }
-`
+`;
 
 export const ContentRow = styled.div`
   display: block;
@@ -76,7 +82,7 @@ export const ContentRow = styled.div`
   & + & {
     margin-top: 16px;
   }
-`
+`;
 
 export const ContentBlock = styled.div`
   display: flex;
@@ -87,7 +93,7 @@ export const ContentBlock = styled.div`
   border-radius: ${BorderRad.s};
   box-shadow: ${Shadows.main};
   padding: 32px 32px;
-`
+`;
 
 export const Sidebar = styled.header`
   display: flex;
@@ -98,7 +104,7 @@ export const Sidebar = styled.header`
   background-color: ${Colors.White};
   box-shadow: ${Shadows.main};
   z-index: 100;
-`
+`;
 
 export const SidebarNav = styled.nav`
   display: flex;
@@ -106,7 +112,7 @@ export const SidebarNav = styled.nav`
   align-items: center;
   height: 100%;
   position: relative;
-`
+`;
 
 export const ToMain = styled.a`
   display: flex;
@@ -121,7 +127,7 @@ export const ToMain = styled.a`
   &:hover {
     color: ${Colors.Yellow[500]};
   }
-`
+`;
 
 export const ToMainBottom = styled.span`
   display: grid;
@@ -132,17 +138,17 @@ export const ToMainBottom = styled.span`
   font-size: 10px;
   line-height: 14px;
   font-weight: 500;
-`
+`;
 
 export const Handshaking = styled.span`
   letter-spacing: -0.3em;
-`
+`;
 
 export const SidebarNavLinks = styled.div`
   margin-top: 32px;
   display: flex;
   flex-direction: column;
-`
+`;
 export const SidebarLink = styled(NavLink)`
   display: flex;
   position: relative;
@@ -159,7 +165,7 @@ export const SidebarLink = styled(NavLink)`
   white-space: nowrap;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     width: calc(100% - 20px);
@@ -185,11 +191,11 @@ export const SidebarLink = styled(NavLink)`
       transform: scaleX(1);
     }
   }
-`
+`;
 
 export const SidebarLinkDescription = styled.span`
   display: contents;
   color: ${Colors.Gray[600]};
   font-size: 10px;
   text-transform: none;
-`
+`;
