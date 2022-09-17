@@ -33,7 +33,7 @@
     "@usedapp/coingecko": "^1.1.5",
     "@usedapp/core": "^1.1.5",
     "@usedapp/portis-connector": "^1.0.0-dev.0de1fa4",
-    "@usedapp/wallet-connect-connector": "^1.0.0-dev.f423b11 ",
+    "@usedapp/wallet-connect-connector": "^1.0.0-dev.0de1fa4",
     "@walletconnect/web3-provider": "^1.7.1",
     "@web3-react/walletconnect-connector": "6.2.4",
     "debug": "^4.3.4",
