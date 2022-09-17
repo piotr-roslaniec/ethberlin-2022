@@ -55,63 +55,61 @@ export function WalletConnect() {
   const stakingBalance = useEtherBalance(STAKING_CONTRACT);
 
   return (
-    <MainContent>
-      <Container>
-        <Section>
-          <SectionRow>
-            <Title>WalletConnect Usage Example</Title>
-            <Button onClick={account ? onDisconnect : onConnect}>
-              {account ? "Disconnect" : "Connect"}
-            </Button>
-          </SectionRow>
-          <ContentBlock>
-            {chainId && account && (
-              <ContentRow>
-                <Label>Active Chain ID:</Label>{" "}
-                <TextInline>{chainId}</TextInline>{" "}
-              </ContentRow>
-            )}
-            {account && (
-              <ContentRow>
-                <Label>Account:</Label> <TextInline>{account}</TextInline>
-              </ContentRow>
-            )}
-            {userBalance && (
-              <ContentRow>
-                <Label>Ether balance:</Label>{" "}
-                <TextInline>{formatEther(userBalance)}</TextInline>{" "}
-                <Label>ETH</Label>
-              </ContentRow>
-            )}
-            {stakingBalance && (
-              <ContentRow>
-                <Label>ETH2 staking contract holds:</Label>{" "}
-                <TextInline>{formatEther(stakingBalance)}</TextInline>{" "}
-                <Label>ETH</Label>
-              </ContentRow>
-            )}
-            {signedMessage && account && (
-              <ContentRow>
-                <Label>Signed message signature:</Label>{" "}
-                <TextInline style={{ overflowWrap: "break-word" }}>
-                  {signedMessage}
-                </TextInline>{" "}
-              </ContentRow>
-            )}
-          </ContentBlock>
-          {account && (
-            <SectionRow
-              style={{
-                marginTop: "20px",
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Button onClick={onSign}>Sign message</Button>
-            </SectionRow>
+    <Container>
+      <Section>
+        <SectionRow>
+          <Title>WalletConnect Usage Example</Title>
+          <Button onClick={account ? onDisconnect : onConnect}>
+            {account ? "Disconnect" : "Connect"}
+          </Button>
+        </SectionRow>
+        <ContentBlock>
+          {chainId && account && (
+            <ContentRow>
+              <Label>Active Chain ID:</Label>{" "}
+              <TextInline>{chainId}</TextInline>{" "}
+            </ContentRow>
           )}
-        </Section>
-      </Container>
-    </MainContent>
+          {account && (
+            <ContentRow>
+              <Label>Account:</Label> <TextInline>{account}</TextInline>
+            </ContentRow>
+          )}
+          {userBalance && (
+            <ContentRow>
+              <Label>Ether balance:</Label>{" "}
+              <TextInline>{formatEther(userBalance)}</TextInline>{" "}
+              <Label>ETH</Label>
+            </ContentRow>
+          )}
+          {stakingBalance && (
+            <ContentRow>
+              <Label>ETH2 staking contract holds:</Label>{" "}
+              <TextInline>{formatEther(stakingBalance)}</TextInline>{" "}
+              <Label>ETH</Label>
+            </ContentRow>
+          )}
+          {signedMessage && account && (
+            <ContentRow>
+              <Label>Signed message signature:</Label>{" "}
+              <TextInline style={{ overflowWrap: "break-word" }}>
+                {signedMessage}
+              </TextInline>{" "}
+            </ContentRow>
+          )}
+        </ContentBlock>
+        {account && (
+          <SectionRow
+            style={{
+              marginTop: "20px",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button onClick={onSign}>Sign message</Button>
+          </SectionRow>
+        )}
+      </Section>
+    </Container>
   );
 }

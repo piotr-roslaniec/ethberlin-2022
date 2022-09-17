@@ -3818,9 +3818,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@usedapp/core@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "@usedapp/core@npm:1.1.5"
+"@usedapp/core@npm:1.2.0-dev.38cc8d0":
+  version: 1.2.0-dev.38cc8d0
+  resolution: "@usedapp/core@npm:1.2.0-dev.38cc8d0"
   dependencies:
     "@metamask/detect-provider": ^1.2.0
     "@uniswap/token-lists": ^1.0.0-beta.27
@@ -3833,7 +3833,7 @@ __metadata:
     react: "*"
   bin:
     usedapp-generate-hooks: bin/usedapp-generate-hooks.js
-  checksum: 5db2ca8f132780b935c6c0138bf821728e73c5f3ebad4ac765411dd47b0abff29100e4a3d8798f0fdca1effc49d8fcb3c1344e53659050afdb344072ab1531a8
+  checksum: 078c6c097f8c6c85e1d23f2a9c1ee9026a9f950de75977670356460c4550201f7416109a39ac336f929dd5a1c23d1782afe5e7de28a8ae4f27c7d7c882d349a8
   languageName: node
   linkType: hard
 
@@ -18202,7 +18202,7 @@ __metadata:
     "@types/react": ^18.0.20
     "@types/react-dom": ^18.0.6
     "@types/styled-components": ^5.1.26
-    "@usedapp/core": ^1.1.5
+    "@usedapp/core": 1.2.0-dev.38cc8d0
     "@walletconnect/web3-provider": ^1.8.0
     "@web3-react/walletconnect-connector": ^6.2.13
     copy-webpack-plugin: ^6.2.1
