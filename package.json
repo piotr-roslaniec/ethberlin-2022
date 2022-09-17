@@ -15,8 +15,5 @@
     "node": "16.x",
     "yarn": "3.2.1"
   },
-  "packageManager": "yarn@3.2.1",
-  "dependencies": {
-    "ethers": "^5.7.1"
-  }
+  "packageManager": "yarn@3.2.1"
 }
