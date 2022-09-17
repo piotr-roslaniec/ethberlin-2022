@@ -1,7 +1,7 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useEthers } from "@usedapp/core";
-import { Section, SectionRow } from "../components/base/base";
-import { Title } from "../typography/Title";
+
+import { SectionRow } from "../components/base/base";
 import { Button } from "../components/base/Button";
 
 export function WalletConnect() {
@@ -25,15 +25,10 @@ export function WalletConnect() {
   }
 
   return (
-    <>
-      <Section>
-        <SectionRow>
-          <Title>WalletConnect Connector</Title>
-          <Button onClick={account ? onDisconnect : onConnect}>
-            {account ? "DISCONNECT" : "WalletConnect"}
-          </Button>
-        </SectionRow>
-      </Section>
-    </>
+    <SectionRow>
+      <Button onClick={account ? onDisconnect : onConnect}>
+        {account ? "DISCONNECT" : "WalletConnect"}
+      </Button>
+    </SectionRow>
   );
 }
