@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "yarn workspaces foreach -vitp run start",
+    "test": "yarn workspaces foreach -vitp run test",
+    "build": "yarn workspaces foreach -vitp run build",
+    "lint": "yarn workspaces foreach -vip run lint",
+    "lint:fix": "yarn workspaces foreach -vip run lint:fix"
+  },
+  "packageManager": "yarn@3.2.3"
+}
