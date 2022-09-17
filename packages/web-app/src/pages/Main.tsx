@@ -6,7 +6,8 @@ import Logo from "../assets/images/Logo.png";
 export const Main = () => {
   return (
     <MainContent>
-      <img src={Logo} alt="logo" />
+      {/* TODO: Update how this image is displayed */}
+      <img src={Logo} alt="logo" width={250} height={250} />
       <ConnectorPage />
       <L2ExitsPage />
     </MainContent>
