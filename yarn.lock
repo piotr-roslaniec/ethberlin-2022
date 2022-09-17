@@ -12438,6 +12438,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"loopring@workspace:packages/loopring":
+  version: 0.0.0-use.local
+  resolution: "loopring@workspace:packages/loopring"
+  dependencies:
+    typescript: ^4.8.3
+  languageName: unknown
+  linkType: soft
+
 "loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
