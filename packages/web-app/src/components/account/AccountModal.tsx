@@ -112,7 +112,6 @@ const ClosingButton = styled.button`
   transition: ${Transitions.all};
 
   &:hover {
-    color: ${Colors.Yellow[500]};
   }
 `;
 

@@ -7,7 +7,7 @@ export const L2ExitsPage = () => {
     <Container>
       <Section>
         <SectionRow>
-          <Title>L2 Exits</Title>
+          <Title>SELECT AN L2 TO EXIT</Title>
         </SectionRow>
         <SectionRow>
           <ZkSync />

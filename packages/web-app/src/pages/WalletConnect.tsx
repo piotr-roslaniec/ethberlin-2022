@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { formatEther } from "@ethersproject/units";
-import { Web3Provider } from "@ethersproject/providers";
 import { useEtherBalance, useEthers } from "@usedapp/core";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
@@ -15,11 +13,8 @@ import { TextInline } from "../typography/Text";
 import { Title } from "../typography/Title";
 import { Button } from "../components/base/Button";
 
-const STAKING_CONTRACT = "0x00000000219ab540356cBB839Cbe05303d7705Fa";
-
 export function WalletConnect() {
-  const { account, activate, chainId, deactivate, library } = useEthers();
-  const [signedMessage, setSignedMessage] = useState("");
+  const { account, activate, chainId, deactivate } = useEthers();
 
   async function onConnect() {
     try {
@@ -36,40 +31,18 @@ export function WalletConnect() {
   async function onDisconnect() {
     deactivate();
     localStorage.removeItem("walletconnect");
-    setSignedMessage("");
-  }
-
-  async function onSign() {
-    const msg = "I sign Wallet Connect test message on @usedapp";
-    const provider = library as Web3Provider;
-    try {
-      const signedMsg = await provider.getSigner().signMessage(msg);
-      setSignedMessage(signedMsg);
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   const userBalance = useEtherBalance(account);
-  const stakingBalance = useEtherBalance(STAKING_CONTRACT);
 
   return (
     <>
       <Section>
-      <img src="images/Logo.png" alt="logo" />
-
         <SectionRow>
-          <Title>WALLETCONNECT USAGE EXAMPLE</Title>
+          <Title>WalletConnect Connector</Title>
           <Button onClick={account ? onDisconnect : onConnect}>
             {account ? "DISCONNECT" : "WalletConnect"}
           </Button>
-        </SectionRow>
-
-        <SectionRow>
-          <Title>SELECT AN L2 TO EXIT</Title>
-          {/* <Select>
-          
-          </Select>  */}
         </SectionRow>
 
         <ContentBlock>
@@ -90,33 +63,7 @@ export function WalletConnect() {
               <Label>ETH</Label>
             </ContentRow>
           )}
-          {stakingBalance && (
-            <ContentRow>
-              <Label>ETH2 staking contract holds:</Label>{" "}
-              <TextInline>{formatEther(stakingBalance)}</TextInline>{" "}
-              <Label>ETH</Label>
-            </ContentRow>
-          )}
-          {signedMessage && account && (
-            <ContentRow>
-              <Label>Signed message signature:</Label>{" "}
-              <TextInline style={{ overflowWrap: "break-word" }}>
-                {signedMessage}
-              </TextInline>{" "}
-            </ContentRow>
-          )}
         </ContentBlock>
-        {account && (
-          <SectionRow
-            style={{
-              marginTop: "20px",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Button onClick={onSign}>Sign message</Button>
-          </SectionRow>
-        )}
       </Section>
     </>
   );

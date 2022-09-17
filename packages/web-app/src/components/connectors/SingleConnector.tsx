@@ -9,7 +9,6 @@ import { ContentBlock, ContentRow, SectionRow } from "../base/base";
 import { Title } from "../../typography/Title";
 import styled from "styled-components";
 import { Colors } from "../../global/styles";
-import { SendEthForm } from "../SendEthForm/SendEthForm";
 import { formatEther } from "@ethersproject/units";
 import { Label } from "../../typography/Label";
 import { TextInline } from "../../typography/Text";
@@ -34,7 +33,7 @@ export function SingleConnector({ name, connector }: ConnectorProps) {
 
   const active = useMemo(
     () => !!account && activeConnector?.connector === connector,
-    [account, activeConnector]
+    [account, activeConnector?.connector, connector]
   );
 
   return (
@@ -85,7 +84,6 @@ export function SingleConnector({ name, connector }: ConnectorProps) {
         </ContentBlock>
       )}
       <br />
-      {active && <SendEthForm />}
     </>
   );
 }

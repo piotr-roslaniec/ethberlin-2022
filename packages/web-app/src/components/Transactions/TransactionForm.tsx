@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { TextBold } from "../../typography/Text";
 import { ContentBlock } from "../base/base";
 import { Button } from "../base/Button";
-import { BorderRad, Colors } from "../../global/styles";
+import { Colors } from "../../global/styles";
 import { BigNumber } from "ethers";
 import { SpinnerIcon, CheckIcon, ExclamationIcon } from "./Icons";
 
@@ -114,7 +114,7 @@ const InputComponent = ({ ticker, transaction, send }: InputComponentProps) => {
   };
 
   useEffect(() => {
-    if (transaction.status != "Mining") {
+    if (transaction.status !== "Mining") {
       setDisabled(false);
       setValue("0");
     }
@@ -193,7 +193,6 @@ const Input = styled.input`
   width: 120px;
   padding: 0 0 0 24px;
   border: 0;
-  border-radius: ${BorderRad.m};
   -moz-appearance: textfield;
 
   &::-webkit-outer-spin-button,
@@ -221,7 +220,6 @@ const InputRow = styled.div`
   color: ${Colors.Gray["600"]};
   align-items: center;
   border: ${Colors.Gray["300"]} 1px solid;
-  border-radius: ${BorderRad.m};
   overflow: hidden;
 `;
 

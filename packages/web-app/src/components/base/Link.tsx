@@ -13,6 +13,5 @@ export const Link = styled.a`
 
   &:hover,
   &:focus-within {
-    color: ${Colors.Yellow[500]};
   }
 `;
