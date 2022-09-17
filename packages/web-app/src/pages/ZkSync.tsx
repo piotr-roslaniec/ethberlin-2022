@@ -69,8 +69,8 @@ export const ZkSync = () => {
       <SectionRow>
         <ContentBlock>
           {balances.map((balance) => (
-            <ContentRow>
-              <p key={balance.tokenName}>{toToken(balance)}</p>
+            <ContentRow key={balance.tokenName}>
+              <p>{toToken(balance)}</p>
             </ContentRow>
           ))}
         </ContentBlock>

@@ -13179,7 +13179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loopring-exit@workspace:packages/loopring-exit":
+"loopring-exit@workspace:packages/loopring-exit, loopring-exit@workspaces:*":
   version: 0.0.0-use.local
   resolution: "loopring-exit@workspace:packages/loopring-exit"
   dependencies:
@@ -19451,6 +19451,7 @@ __metadata:
     ethers: ^5.7.1
     file-loader: ^6.2.0
     html-webpack-plugin: ^4.5.0
+    loopring-exit: "workspaces:*"
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0

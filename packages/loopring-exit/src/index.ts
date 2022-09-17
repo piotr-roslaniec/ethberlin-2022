@@ -153,10 +153,12 @@ const main = async () => {
     console.log('waiting for inclusion');
     await tx.wait();
 }
+
+/*
 main()
     .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);
         process.exit(1);
     });
-
+*/
