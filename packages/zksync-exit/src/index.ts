@@ -58,9 +58,7 @@ export const emergencyExit = async (syncWallet: zksync.Wallet, tokenName: string
         throw new Error(`Token ${tokenName} not found`);
     }
 
-    const tx = await syncWallet.emergencyWithdraw({ token: tokenName })
-    await tx.awaitVerifyReceipt();
-    await tx.awaitEthereumTxCommit();
+    return syncWallet.emergencyWithdraw({ token: tokenName })
 }
 
 export const getBalances = async (syncWallet: zksync.Wallet)

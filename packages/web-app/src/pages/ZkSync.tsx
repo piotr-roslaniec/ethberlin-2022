@@ -6,6 +6,8 @@ import { Wallet } from "zksync-exit";
 
 import { ContentBlock, ContentRow, Section, SectionRow } from "../components/base/base";
 import { Title } from "../typography/Title";
+import {ethers} from "ethers";
+import {Button} from "../components/base/Button";
 
 type Balance = {
   tokenName: string;
@@ -16,6 +18,7 @@ export const ZkSync = () => {
   const { library } = useEthers();
   const [balances, setBalances] = useState<Balance[]>([]);
   const [zkWallet, setZkWallet] = useState<Wallet>(null as unknown as Wallet);
+  const [transaction, setTransaction] = useState<ethers.Transaction | undefined>(undefined);
 
   useEffect(() => {
     if (!library || !library.getSigner) {
@@ -43,17 +46,19 @@ export const ZkSync = () => {
     doGetBalances();
   }, [zkWallet]);
 
-  const toToken = (balance: Balance) => {
-    const disabled = balance.balance === "0";
-    const maybeButton = disabled ? null : (
-      <button onClick={() => zksync.emergencyExit(zkWallet, balance.tokenName)}>
-        Exit
-      </button>
-    );
+  const renderButton = (balance: Balance) => {
     return (
-      <p>
-        {balance.tokenName} - {formatEther(balance.balance)} {maybeButton}
-      </p>
+      <Button
+        key={balance.tokenName}
+        disabled={balance.balance === "0"}
+        style={{margin: 5}}
+        onClick={async () => {
+          const tx = await zksync.emergencyExit(zkWallet, balance.tokenName);
+          setTransaction(tx.ethTx);
+        }}
+      >
+        {balance.tokenName} ({formatEther(balance.balance)})
+      </Button>
     );
   };
 
@@ -66,15 +71,18 @@ export const ZkSync = () => {
       <SectionRow>
         <Title>ZkSync</Title>
       </SectionRow>
-      <SectionRow>
-        <ContentBlock>
-          {balances.map((balance) => (
-            <ContentRow key={balance.tokenName}>
-              <p>{toToken(balance)}</p>
-            </ContentRow>
-          ))}
-        </ContentBlock>
-      </SectionRow>
+      {!!transaction ? (
+          <SectionRow>
+            <Button onClick={() => window.open('https://goerli.etherscan.io/tx/' + transaction?.hash)}>
+              Check Transaction
+            </Button>
+          </SectionRow>
+      ) : (
+          <SectionRow style={{justifyContent: 'flex-start', flexWrap: 'wrap', margin: -5}}>
+            {balances.map((balance) => renderButton(balance))}
+          </SectionRow>
+      )}
+
     </Section>
   );
 };
