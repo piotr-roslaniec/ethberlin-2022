@@ -13179,9 +13179,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loopring@workspace:packages/loopring":
+"loopring-exit@workspace:packages/loopring-exit":
   version: 0.0.0-use.local
-  resolution: "loopring@workspace:packages/loopring"
+  resolution: "loopring-exit@workspace:packages/loopring-exit"
   dependencies:
     "@loopring-web/loopring-sdk": ^2.1.1
     ethers: ^5.7.1
