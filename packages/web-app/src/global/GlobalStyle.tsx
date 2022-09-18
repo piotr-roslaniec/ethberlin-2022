@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import Dinsrg from "../assets/fonts/Dinsrg.woff";
 import Dinsrg2 from "../assets/fonts/Dinsrg.woff2";
 import { Colors, Fonts } from "./styles";
+import parachute from "../assets/images/parachute.jpeg";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -30,6 +31,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     color: ${Colors.Black[900]};
     overscroll-behavior-y: none;
+  }
+  
+  body {
+    background-image: url(${parachute});
+    background-size: cover;
+    background-position: bottom;
   }
   
   button {
