@@ -31,7 +31,7 @@ jobs:
         run: yarn test
 
       - name: Deploy to Pinata
-        uses: aquiladev/ipfs-action@latest
+        uses: aquiladev/ipfs-action@master
         id: pinata
         with:
           path: ./packages/web-app/build
