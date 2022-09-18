@@ -14,6 +14,7 @@
     "@usedapp/core": "1.2.0-dev.38cc8d0",
     "@walletconnect/web3-provider": "^1.8.0",
     "@web3-react/walletconnect-connector": "^6.2.13",
+    "dydx-exit": "workspaces:*",
     "ethers": "^5.7.1",
     "file-loader": "^6.2.0",
     "loopring-exit": "workspaces:*",

@@ -5,6 +5,7 @@ import { Button } from "../components/base/Button";
 import { Title } from "../typography/Title";
 import { ZkSync } from "./ZkSync";
 import {Loopring} from "./Loopring";
+import { DyDx } from "./DyDx";
 
 export const L2ExitsPage = () => {
   const [selectedL2, setSelectedL2] = useState<string|undefined>(undefined);
@@ -20,6 +21,7 @@ export const L2ExitsPage = () => {
               <>
                 {selectedL2 === 'zksync' && <ZkSync />}
                 {selectedL2 === 'loopring' && <Loopring />}
+                {selectedL2 === 'dydx' && <DyDx />}
               </>
           ) : (
               <Section>
@@ -28,6 +30,9 @@ export const L2ExitsPage = () => {
                 </SectionRow>
                 <SectionRow>
                   <Button onClick={() => setSelectedL2('loopring')}>Loopring</Button>
+                </SectionRow>
+                <SectionRow>
+                  <Button onClick={() => setSelectedL2('dydx')}>dYdX</Button>
                 </SectionRow>
               </Section>
           )}
