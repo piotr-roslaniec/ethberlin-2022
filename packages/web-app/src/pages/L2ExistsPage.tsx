@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, {Dispatch, SetStateAction, useState} from "react";
 
 import { Container, Section, SectionRow } from "../components/base/base";
 import { Button } from "../components/base/Button";
@@ -6,8 +6,7 @@ import { Title } from "../typography/Title";
 import { ZkSync } from "./ZkSync";
 import {Loopring} from "./Loopring";
 
-export const L2ExitsPage = () => {
-  const [selectedL2, setSelectedL2] = useState<string|undefined>(undefined);
+export const L2sPage = (props: {selectedL2: string|undefined, setSelectedL2: Dispatch<SetStateAction<string|undefined>>}) => {
 
   return (
     <Container>
@@ -15,23 +14,18 @@ export const L2ExitsPage = () => {
         <SectionRow>
           <Title>SELECT AN L2 TO EXIT</Title>
         </SectionRow>
-        <SectionRow>
-          {selectedL2 ? (
-              <>
-                {selectedL2 === 'zksync' && <ZkSync />}
-                {selectedL2 === 'loopring' && <Loopring />}
-              </>
+          {props.selectedL2 ? (
+              <Button onClick={() => props.setSelectedL2(undefined)}>Change L2</Button>
           ) : (
-              <Section>
+              <>
                 <SectionRow>
-                  <Button onClick={() => setSelectedL2('zksync')}>ZkSync</Button>
+                  <Button onClick={() => props.setSelectedL2('zksync')}>ZkSync</Button>
                 </SectionRow>
                 <SectionRow>
-                  <Button onClick={() => setSelectedL2('loopring')}>Loopring</Button>
+                  <Button onClick={() => props.setSelectedL2('loopring')}>Loopring</Button>
                 </SectionRow>
-              </Section>
+              </>
           )}
-        </SectionRow>
       </Section>
     </Container>
   );
