@@ -38,6 +38,7 @@ jobs:
           service: pinata
           pinataKey: ${{ secrets.PINATA_KEY }}
           pinataSecret: ${{ secrets.PINATA_SECRET }}
+          key: ${{ secrets.IPNS_KEY }}
           pinName: L2Exit
           timeout: 3600
           verbose: true
